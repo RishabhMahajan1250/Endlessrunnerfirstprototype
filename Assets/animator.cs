@@ -32,11 +32,7 @@ public class animator : MonoBehaviour
         {
             player_Animator.Play("Soccer Tackle");
         }
-        if (Input.GetKeyDown("w"))
-        {
-            player_Animator.Play("Jump");
-        }
-     
+       
 
            
     }
