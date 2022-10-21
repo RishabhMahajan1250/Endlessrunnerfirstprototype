@@ -12,6 +12,7 @@ public class movementcontrol : MonoBehaviour
     [SerializeField] Transform markcenter; 
   void Start()
     {
+        
         Movingtodeath.enabled = false;
         player = GetComponent<Collider>();
         player.enabled = false;
@@ -19,25 +20,31 @@ public class movementcontrol : MonoBehaviour
     }
     void Update()
     {
+
+        /*xx =new Vector3(transform.position.x,transform.position.y,transform.position.z);*/
         if (Input.GetKeyDown(KeyCode.Space))
         {
             player.enabled = true;
         }
-        /*xx =new Vector3(transform.position.x,transform.position.y,transform.position.z);*/
-
-
+    if(player.enabled == true){ 
         if (Input.GetKeyDown("a"))
         {
-           
-                rb.AddForce(-200f, 0f, 0f);
+
+            rb.AddForce(-200f, 0f, 0f);
 
         }
         if (Input.GetKeyDown("d"))
         {
-            
+
             rb.AddForce(200f, 0f, 0f);
 
         }
+
+        if (Input.GetKeyDown("w"))
+        {
+                rb.AddForce(0f, 500f, 0f);
+        }
+    }
       
      
 
