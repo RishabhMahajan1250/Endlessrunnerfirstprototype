@@ -16,7 +16,11 @@ public class animator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            player_Animator.SetFloat("speed", 1f);
+            player_Animator.Play("mixamo_com");
+        }
+        if (Input.GetKeyDown("s"))
+        {
+            player_Animator.Play("Soccer Tackle");
         }
     }
 }
