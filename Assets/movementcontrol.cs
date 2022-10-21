@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class movementcontrol : MonoBehaviour
 {
-    public Transform girltorso;
+    [SerializeField] movingtodeath Movingtodeath;
     public Animator animator;
-    Quaternion x  ;
+    Collider player; 
    
     Rigidbody rb;
     [SerializeField] Transform markcenter; 
   void Start()
     {
-        x = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
-
+        Movingtodeath.enabled = false;
+        player = GetComponent<Collider>();
+        player.enabled = false;
         rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
-       
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            player.enabled = true;
+        }
         /*xx =new Vector3(transform.position.x,transform.position.y,transform.position.z);*/
 
 
@@ -34,14 +38,7 @@ public class movementcontrol : MonoBehaviour
             rb.AddForce(200f, 0f, 0f);
 
         }
-        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Soccer Tackle"))
-        {
-            transform.rotation = Quaternion.Euler(0transform.rotation.x, transform.position.y + 90,transform.position.z);
-        }
-        else
-        {
-            transform.rotation = x;
-        }
+      
      
 
         if (Vector3.Distance(transform.position, markcenter.position) >= 1.1f /*|| transform.position.x == 0f*/ )
@@ -50,7 +47,10 @@ public class movementcontrol : MonoBehaviour
             markcenter.position = transform.position;
         }
      
-
+        if(transform.position.z <= -30f)
+        {
+            Destroy(gameObject);
+        }
 
 
 
@@ -60,11 +60,11 @@ public class movementcontrol : MonoBehaviour
     {
         if(col.CompareTag("obstacle"))
         {
-            rb.velocity = new Vector3(0f, 0f, -25f);
+            //rb.velocity = new Vector3(0f, 0f, -25f);
             Debug.Log("hit");
            
             animator.Play("fall");
-           
+            Movingtodeath.enabled = true;
 
         }
     }
