@@ -44,6 +44,7 @@ public class movementcontrol : MonoBehaviour
         {
                 rb.AddForce(0f, 500f, 0f);
         }
+
     }
       
      
