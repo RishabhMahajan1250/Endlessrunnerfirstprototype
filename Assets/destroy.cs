@@ -15,12 +15,12 @@ public class destroy : MonoBehaviour
     {
         
     }
-    void OnTriggerEnter(Collider col)
+/*    void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Player"))
         {
             Destroy(gameObject);
 
         }
-    }
+    }*/
 }
