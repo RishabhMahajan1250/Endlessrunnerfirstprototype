@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class enabler : MonoBehaviour
 {
-
+    static int x = 0;
     [SerializeField] obsgen startlevel;// Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,10 @@ public class enabler : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
+        {
+            x = 1;
+        }
+        if (x == 1)
         {
             startlevel.enabled = true;
         }

@@ -69,11 +69,15 @@ public class movementcontrol : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        while( x == 1) 
-        { 
-            if(Input.GetKeyDown("w"))
+        if( x == 1) 
+        {
+            if (Input.GetKeyDown("w"))
+            { 
         rb.AddForce(0f, 300f, 0f);
-        
+                x = 0;
+            }
+
+
         }
 
     }
@@ -81,7 +85,7 @@ public class movementcontrol : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
 
-            while (col.gameObject.CompareTag("ground"))
+            if(col.gameObject.CompareTag("ground"))
         {
             Debug.Log("on ground");
             x = 1;

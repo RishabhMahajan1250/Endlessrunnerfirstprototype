@@ -20,7 +20,7 @@ public class obsgen : MonoBehaviour
 
             GameObject a = Instantiate(obstacle) as GameObject;
             a.transform.position = new Vector3(Random.Range(-2, 4),transform.position.y , transform.position.z + i * 7*3f);
-            //a.transform.localScale = new Vector3(Random.Range(100, 400), a.transform.localScale.y, a.transform.localScale.z);
+            a.transform.localScale = new Vector3(Random.Range(100, 300), a.transform.localScale.y, a.transform.localScale.z);
         }
         for (int i = 0; i <= 13/3f; i++)
         {
@@ -36,7 +36,7 @@ public class obsgen : MonoBehaviour
 
             GameObject a = Instantiate(crystal) as GameObject;
             a.transform.position = new Vector3(Random.Range(-2, 4), transform.position.y+0.75f, transform.position.z + i * 7/4f);
-            //a.transform.localScale = new Vector3(Random.Range(100, 400), a.transform.localScale.y, a.transform.localScale.z);
+           // a.transform.localScale = new Vector3(Random.Range(100, 400), a.transform.localScale.y, a.transform.localScale.z);
         }
 
 
@@ -63,7 +63,7 @@ public class obsgen : MonoBehaviour
 
                 GameObject a = Instantiate(obstacle) as GameObject;
                 a.transform.position = new Vector3(Random.Range(-2, 4), transform.position.y , transform.position.z + i * 7*3f);
-               // a.transform.localScale = new Vector3(Random.Range(100, 400), a.transform.localScale.y, a.transform.localScale.z);
+                a.transform.localScale = new Vector3(Random.Range(100, 300), a.transform.localScale.y, a.transform.localScale.z);
                 /*if (i > 25)
                 {
 
