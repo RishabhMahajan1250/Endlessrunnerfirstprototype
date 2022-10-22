@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class hithead : MonoBehaviour
 {
+    static int x;
+    public int score = 0;
     [SerializeField] movingtodeath Movingtodeath;
     [SerializeField] GameObject player;
      Collider uppertorso ;
@@ -21,8 +24,13 @@ public class hithead : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            x = 2;
+        }
+        if(x == 2)
+        {
             uppertorso.enabled = true;
         }
+
 
         if (player.transform.position.z <= -30f)
         {
@@ -31,7 +39,7 @@ public class hithead : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("obstacleslide"))
+        if (col.CompareTag("obstacleslide") || col.CompareTag("obstacle"))
         {
             
             Debug.Log("hit");
@@ -41,5 +49,13 @@ public class hithead : MonoBehaviour
 
 
         }
+        if (col.CompareTag("coin"))
+        {
+            Destroy(col.gameObject);
+            score++;
+           
+        }
+      
     }
+    
 }

@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class restart : MonoBehaviour
+public class destroy : MonoBehaviour
 {
-   
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +14,13 @@ public class restart : MonoBehaviour
     void Update()
     {
         
+    }
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            Destroy(gameObject);
 
-        if (Input.GetKeyDown("r"))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-       
+        }
     }
 }

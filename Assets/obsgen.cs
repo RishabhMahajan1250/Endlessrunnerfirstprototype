@@ -13,7 +13,7 @@ public class obsgen : MonoBehaviour
     void Start()
     {
         speed = 1;
-      
+        transform.position += new Vector3(0f, 0f, 50f);
         for (int i = 0; i <= 26/3f; i++)
         {
            
@@ -56,7 +56,7 @@ public class obsgen : MonoBehaviour
         transform.position += new Vector3(0f, 0f, -20f * Time.deltaTime * speed);
         if (transform.position.z <= -21.9f)
         {
-            transform.position += new Vector3(0f, 0f, 171f);
+            transform.position += new Vector3(0f, 0f, 171f+50f);
             for (int i = 0; i <= 26/3f; i++)
             {
                

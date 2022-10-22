@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class movementcontrol : MonoBehaviour
 {
+    public int x = 0  ;
     [SerializeField] movingtodeath Movingtodeath;
     public Animator animator;
-    Collider player; 
+   // Collider player; 
    
     Rigidbody rb;
     [SerializeField] Transform markcenter; 
@@ -14,19 +15,20 @@ public class movementcontrol : MonoBehaviour
     {
         
         Movingtodeath.enabled = false;
-        player = GetComponent<Collider>();
-        player.enabled = false;
+      /*  player = GetComponent<Collider>();
+        player.enabled = false;*/
         rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
 
         /*xx =new Vector3(transform.position.x,transform.position.y,transform.position.z);*/
-        if (Input.GetKeyDown(KeyCode.Space))
+     /*   if (Input.GetKeyDown(KeyCode.Space))
         {
             player.enabled = true;
-        }
-    if(player.enabled == true){ 
+           
+        }*/
+   
         if (Input.GetKeyDown("a"))
         {
 
@@ -39,15 +41,23 @@ public class movementcontrol : MonoBehaviour
             rb.AddForce(200f, 0f, 0f);
 
         }
+            
+        
+        
 
-        if (Input.GetKeyDown("w"))
-        {
-                rb.AddForce(0f, 500f, 0f);
-        }
 
-    }
-      
-     
+        /* if(transform.position.y >= 2)
+         {
+             transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+         }*/
+
+
+
+
+
+
+
+
 
         if (Vector3.Distance(transform.position, markcenter.position) >= 1.1f /*|| transform.position.x == 0f*/ )
         {
@@ -59,21 +69,24 @@ public class movementcontrol : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
+        while( x == 1) 
+        { 
+            if(Input.GetKeyDown("w"))
+        rb.AddForce(0f, 300f, 0f);
+        
+        }
 
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnCollisionEnter(Collision col)
     {
-        if(col.CompareTag("obstacle"))
+
+            while (col.gameObject.CompareTag("ground"))
         {
-            //rb.velocity = new Vector3(0f, 0f, -25f);
-            Debug.Log("hit");
-           
-            animator.Play("fall");
-            Movingtodeath.enabled = true;
+            Debug.Log("on ground");
+            x = 1;
 
         }
+        
     }
 }
