@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class hithead : MonoBehaviour
 {
-    public deadsound playerdeath;
+   
     static int x;
     public int score = 0;
     [SerializeField] movingtodeath Movingtodeath;
@@ -47,7 +47,7 @@ public class hithead : MonoBehaviour
         {
             
             Debug.Log("hit");
-            playerdeath.deadconfirm = 1;
+           
             animator.Play("fall");
             Movingtodeath.enabled = true;
 
