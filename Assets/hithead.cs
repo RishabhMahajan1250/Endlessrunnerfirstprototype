@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class hithead : MonoBehaviour
 {
+    public deadsound playerdeath;
     static int x;
     public int score = 0;
     [SerializeField] movingtodeath Movingtodeath;
     [SerializeField] GameObject player;
      Collider uppertorso ;
     public Animator animator;
+    [SerializeField] AudioSource playeraud;
+    [SerializeField] AudioClip coincollected;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +47,7 @@ public class hithead : MonoBehaviour
         {
             
             Debug.Log("hit");
-
+            playerdeath.deadconfirm = 1;
             animator.Play("fall");
             Movingtodeath.enabled = true;
 
@@ -51,6 +55,8 @@ public class hithead : MonoBehaviour
         }
         if (col.CompareTag("coin"))
         {
+            playeraud.clip = coincollected;
+            playeraud.Play();
             Destroy(col.gameObject);
             score++;
            

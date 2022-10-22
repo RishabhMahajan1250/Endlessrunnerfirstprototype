@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class movementcontrol : MonoBehaviour
 {
+    [SerializeField] screenappear endscreen;
     public int x = 0  ;
     [SerializeField] movingtodeath Movingtodeath;
     public Animator animator;
@@ -13,7 +14,7 @@ public class movementcontrol : MonoBehaviour
     [SerializeField] Transform markcenter; 
   void Start()
     {
-        
+        endscreen.enabled = false;
         Movingtodeath.enabled = false;
       /*  player = GetComponent<Collider>();
         player.enabled = false;*/
@@ -78,6 +79,12 @@ public class movementcontrol : MonoBehaviour
             }
 
 
+        }
+      if (transform.position.y <= -2f || transform.position.z < -23f) 
+        {
+            endscreen.enabled = true;
+            Destroy(gameObject);
+        
         }
 
     }
