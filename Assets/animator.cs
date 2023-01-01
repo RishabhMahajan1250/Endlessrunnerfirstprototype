@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class animator : MonoBehaviour
 {
+    static int x = 0;
     AudioSource audioSource;
     [SerializeField] AudioClip running;
     [SerializeField] AudioClip jump;
@@ -14,39 +15,97 @@ public class animator : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         player_Animator = GetComponent<Animator>();
-        player_Animator.Play("mixamo_com 1");
+        player_Animator.Play("mixamo_com");
+        audioSource.clip = running;
+        audioSource.loop = true;
+        audioSource.Play();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Space) || player_Animator.GetCurrentAnimatorStateInfo(0).IsName("mixamo_com 1"))
+            
+       
+   
+  
+
+
+
+
+
+
+
+
+        if (Input.touchCount > 0 )
         {
-            player_Animator.Play("mixamo_com");
-            audioSource.clip = running;
-            audioSource.Play();
+            Touch touch = Input.GetTouch(0);
+
+           
+            
+
+
+            /*   if (Input.GetKeyDown(KeyCode.Space))
+               {
+                   player_Animator.Play("mixamo_com");
+               }*/
+            if (Input.GetKeyDown("s") || touch.deltaPosition.y  < -30)
+            {
+                player_Animator.Play("Soccer Tackle");
+                x = 0;
+                if (player_Animator.GetCurrentAnimatorStateInfo(0).IsName("Soccer Tackle"))
+                {
+                    audioSource.clip = slide;
+                    audioSource.loop = false;
+                    audioSource.Play();
+                }
+                if (player_Animator.GetCurrentAnimatorStateInfo(0).IsName("mixamo_com"))
+                {
+                    audioSource.clip = running;
+                    audioSource.loop = true;
+                    audioSource.Play();
+                }
+
+            }
+       /*     else
+        if (player_Animator.GetCurrentAnimatorStateInfo(0).IsName("mixamo_com"))
+            {
+                
+                audioSource.loop = true;
+                audioSource.clip = running;
+                audioSource.Play();
+            }*/
+            if (Input.GetKeyDown("w") || touch.deltaPosition.y > 30)
+            {
+                player_Animator.Play("Jump");
+                x = 0;
+                if (player_Animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+                {
+                    audioSource.clip = jump;
+                    audioSource.loop = false;
+                    audioSource.Play();
+                }
+                if(player_Animator.GetCurrentAnimatorStateInfo(0).IsName("mixamo_com"))
+                {
+                    audioSource.clip = running;
+                    audioSource.loop = true;
+                    audioSource.Play();
+                }
+
+            }
+    /*        else
+        if (player_Animator.GetCurrentAnimatorStateInfo(0).IsName("mixamo_com"))
+            {
+             
+                audioSource.loop = true;
+                audioSource.clip = running;
+                audioSource.Play();
+            }*/
+
         }
 
-
-        /*   if (Input.GetKeyDown(KeyCode.Space))
-           {
-               player_Animator.Play("mixamo_com");
-           }*/
-        if (Input.GetKeyDown("s"))
-        {
-            player_Animator.Play("Soccer Tackle");
-            audioSource.clip = slide;
-            audioSource.Play();
-
-        }
-        if (Input.GetKeyDown("w"))
-        {
-            player_Animator.Play("Jump");
-            audioSource.clip = jump;
-            audioSource.Play();
-        }
-     
-
+      
+      
     }
 }

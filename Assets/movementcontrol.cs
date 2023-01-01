@@ -24,25 +24,26 @@ public class movementcontrol : MonoBehaviour
     {
 
         /*xx =new Vector3(transform.position.x,transform.position.y,transform.position.z);*/
-     /*   if (Input.GetKeyDown(KeyCode.Space))
-        {
-            player.enabled = true;
-           
-        }*/
-   
-        if (Input.GetKeyDown("a"))
+        /*   if (Input.GetKeyDown(KeyCode.Space))
+           {
+               player.enabled = true;
+
+           }*/
+        if (Input.touchCount > 0)
+        {   Touch touch = Input.GetTouch(0);
+        if (Input.GetKeyDown("a") || touch.deltaPosition.x < -60)
         {
 
             rb.AddForce(-200f, 0f, 0f);
 
         }
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("d") || touch.deltaPosition.x > 60)
         {
 
             rb.AddForce(200f, 0f, 0f);
 
         }
-            
+    } 
         
         
 
@@ -72,13 +73,16 @@ public class movementcontrol : MonoBehaviour
         }
         if( x == 1) 
         {
-            if (Input.GetKeyDown("w"))
-            { 
-        rb.AddForce(0f, 300f, 0f);
-                x = 0;
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                if (Input.GetKeyDown("w") || touch.deltaPosition.y > 30)
+                {
+                    rb.AddForce(0f, 300f, 0f);
+                    x = 0;
+                }
+
             }
-
-
         }
       if (transform.position.y <= -2f || transform.position.z < -23f) 
         {

@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GAMESTART : MonoBehaviour
 {
-    static int x = 0;
+    public GAMESTART gamestart; 
+    public restart restart;
+    static int x ;
     [SerializeField] obsgen obstaclegenerator;
     [SerializeField] Image startscreen;
     // Start is called before the first frame update
@@ -13,21 +15,31 @@ public class GAMESTART : MonoBehaviour
         startscreen = GetComponent<Image>();
         startscreen.enabled = true;
         obstaclegenerator.enabled = false;
-        x = x + 1;
+        x = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) )
+        restart.enabled = false;
+        if (Input.touchCount > 0)
         {
             startscreen.enabled = false;
-            x = x - 1; 
-            
+            x = 0;
+
         }
+       
         if (x == 0)
         {
+           
             obstaclegenerator.enabled = true;
+            gamestart.enabled = false;
+
         }
+      /*  else
+        {
+            startscreen.enabled = true;
+            obstaclegenerator.enabled = false;
+        }*/
     }
 }

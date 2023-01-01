@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.UI;
+using UnityEngine.UI;
 public class highscore : MonoBehaviour
 {
     public hithead score; 

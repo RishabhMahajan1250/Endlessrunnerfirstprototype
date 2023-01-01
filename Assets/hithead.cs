@@ -14,7 +14,7 @@ public class hithead : MonoBehaviour
     public Animator animator;
     [SerializeField] AudioSource playeraud;
     [SerializeField] AudioClip coincollected;
-   
+    [SerializeField] AudioClip running;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +26,7 @@ public class hithead : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.touchCount > 0)
         {
             x = 2;
         }
@@ -55,12 +55,19 @@ public class hithead : MonoBehaviour
         }
         if (col.CompareTag("coin"))
         {
+           
             playeraud.clip = coincollected;
             playeraud.Play();
             Destroy(col.gameObject);
             score++;
-           
+
         }
+        /*else if(animator.GetCurrentAnimatorStateInfo(0).IsName("mixamo_com"))
+        {
+           
+            playeraud.clip = running;
+            playeraud.Play();
+        }*/
       
     }
     

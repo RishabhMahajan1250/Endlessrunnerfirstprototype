@@ -9,7 +9,7 @@ public class screenappear : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI score;
     [SerializeField] TextMeshProUGUI highscore;
-
+    public restart restart;
     [SerializeField] Image endscreen;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,7 @@ public class screenappear : MonoBehaviour
     void Update()
     {
         endscreen.enabled = true;
+        restart.enabled = true;
         score.enabled = true;
         highscore.enabled = true;
 
